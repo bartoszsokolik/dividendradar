@@ -1,0 +1,15 @@
+dividend:
+  radar:
+    url: "https://publications-radar-2020.nyc3.cdn.digitaloceanspaces.com"
+
+spring:
+  profiles:
+    active: fake
+
+logging:
+  level:
+    org.zalando.logbook: TRACE
+
+logbook:
+  format:
+    style: http
