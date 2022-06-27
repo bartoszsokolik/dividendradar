@@ -1,10 +1,14 @@
 dividend:
   radar:
     url: "https://publications-radar-2020.nyc3.cdn.digitaloceanspaces.com"
+    should:
+      schedule: true
+    cron: "0 0 1 ? * SAT *"
 
 spring:
-  profiles:
-    active: fake
+  data:
+    mongodb:
+      uri: mongodb://user:password@localhost:27017/dividendradar
 
 logging:
   level:
@@ -13,3 +17,21 @@ logging:
 logbook:
   format:
     style: http
+
+quartz:
+  properties:
+    org:
+      quartz:
+        scheduler:
+          instanceName: dividendradar
+          instanceId: AUTO
+          jobFactory:
+            class: org.quartz.simpl.SimpleJobFactory
+          threadsInheritContextClassLoaderOfInitializer: true
+        threadPool:
+          threadCount: 1
+        jobStore:
+          isClustered: true
+          class: com.novemberain.quartz.mongodb.MongoDBJobStore
+          mongoUri: ${spring.data.mongodb.uri}
+          clusterCheckinInterval: 60000

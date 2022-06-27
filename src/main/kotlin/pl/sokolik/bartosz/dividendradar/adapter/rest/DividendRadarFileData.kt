@@ -1,4 +1,4 @@
-package pl.sokolik.bartosz.dividendradar.adapter
+package pl.sokolik.bartosz.dividendradar.adapter.rest
 
 import java.io.ByteArrayOutputStream
 

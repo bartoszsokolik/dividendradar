@@ -1,0 +1,5 @@
+FROM mongo:4.4
+COPY ./mongodb/initdb.d/ /docker-entrypoint-initdb.d/
+COPY ./mongodb/keyfile.key /data/keyfile.key
+RUN chmod 400 /data/keyfile.key
+RUN chown 999:999 /data/keyfile.key
